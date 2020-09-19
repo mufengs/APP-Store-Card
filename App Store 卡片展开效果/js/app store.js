@@ -6,10 +6,15 @@ $(function(){
         $(card).css('--data-mytop', card_offset_scrolltop * -1 + 'px')
         
         let ratio=480/420
-        let height1=$(card).find('img').outrHeight()*ratio
-        let height2=$(card).find('h2').outrHeight()*ratio
-        let height=$(window).height()-height1-height2
+        height -= $(card).find('img').outerHeight() * ratio
+        height -= $(card).find('h2').outerHeight() * ratio
         height /= ratio
         $(card).find('.content').css('height',height)
+
+        if ($(card).hasClass('active')) {
+            $('body').addClass('noscroll')
+          } else {
+            $('body').removeClass('noscroll')
+          }
     })
 })
